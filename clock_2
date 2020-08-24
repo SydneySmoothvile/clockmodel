@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class clock_2 {
+    private static Scanner scanner=new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Clock_1 clock = new Clock_1(00, 00, 00);
+        int seconds;
+        System.out.println("Enter number of seconds of first clock:\n(Note:Number of seconds in a day are 86400)");
+        Scanner readData = new Scanner(System.in);
+        seconds = readData.nextInt();
+        Clock_1 firstClock = new Clock_1(seconds);
+        System.out.println("First Clock: " + firstClock);
+
+        for (int i = 0; i <= 9; i++) {
+            firstClock.tick();
+            System.out.println((i + 1));
+            System.out.println(firstClock);
+        }
+
+        int hours=200,minutes=200,second=200;
+        while (hours>23){
+            System.out.println("Enter hours:");
+            hours = scanner.nextInt();
+        }
+        while (minutes>59){
+            System.out.println("Enter minutes:");
+            minutes = scanner.nextInt();
+            minutes = minutes - 60;
+            hours++;
+        }
+        while (second>59){
+            System.out.println("Enter seconds:");
+            second = scanner.nextInt();
+            second = second - 60;
+            minutes++;
+        }
+        Clock_1 secondClock= new Clock_1(hours,minutes,second);
+        System.out.println("First Clock: " + firstClock);
+        System.out.println("Second Clock: " + secondClock);
+
+
+        System.out.println("\nThe sum of the first clock to the second clock:\n" + clock.addClock(firstClock,secondClock));
+    }
+
+}
